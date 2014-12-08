@@ -63,6 +63,17 @@
      
 						itemSize = 2;
 						numItems = vertices.length / itemSize;
+						
+						gl.useProgram(program);
+     
+						program.uColor = gl.getUniformLocation(program, "uColor");
+						gl.uniform4fv(program.uColor, [0.0, 0.3, 0.0, 1.0]);
+     
+						program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
+						gl.enableVertexAttribArray(program.aVertexPosition);
+						gl.vertexAttribPointer(program.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
+						
+						gl.drawArrays(gl.TRIANGLES, 0, numItems);
                     }
             </script>			
     </head>
